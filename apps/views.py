@@ -1,18 +1,18 @@
 from django.shortcuts import render
-import numpy as np
-import pandas as pd
+# import numpy as np
+# import pandas as pd
 
-import tensorflow as tf
-from tensorflow.keras import datasets, layers, models
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import MinMaxScaler
-import keras
-from keras.models import Sequential
-from keras.layers import Dense , Input
-from keras.layers import LSTM
-import matplotlib.pyplot as plt
-import seaborn as sns
-import os
+# import tensorflow as tf
+# from tensorflow.keras import datasets, layers, models
+# from sklearn.model_selection import train_test_split
+# from sklearn.preprocessing import MinMaxScaler
+# import keras
+# from keras.models import Sequential
+# from keras.layers import Dense , Input
+# from keras.layers import LSTM
+# import matplotlib.pyplot as plt
+# import seaborn as sns
+# import os
 
 # Create your views here.
 def index(request):
@@ -23,28 +23,31 @@ def home(request):
 
 def reload(request):
 
-    training_data = pd.read_csv(r'D:\Django and Flask video\Django practice\Diabetese_prediction\diabetes.csv')
+    # training_data = pd.read_csv(r'D:\Django and Flask video\Django practice\Diabetese_prediction\diabetes.csv')
 
-    X = training_data.drop("Outcome", axis = 1)
-    Y = training_data['Outcome']
+    # X = training_data.drop("Outcome", axis = 1)
+    # Y = training_data['Outcome']
 
-    X_train, X_test , Y_train, Y_test = train_test_split(X, Y, test_size= 0.30)
+    # X_train, X_test , Y_train, Y_test = train_test_split(X, Y, test_size= 0.30)
 
-    model = models.Sequential()
-    model.add(Input( shape=[8,]))
+    # model = models.Sequential()
+    # model.add(Input( shape=[8,]))
 
-    model.add(Dense(50, activation='relu'))
-    model.add(Dense(50, activation='relu'))
-    model.add(Dense(50, activation='relu'))
-    model.add(Dense(40, activation='relu'))
+    # model.add(Dense(50, activation='relu'))
+    # model.add(Dense(50, activation='relu'))
+    # model.add(Dense(50, activation='relu'))
+    # model.add(Dense(40, activation='relu'))
 
-    model.add(Dense(1, activation='sigmoid'))
+    # model.add(Dense(1, activation='sigmoid'))
 
-    model.compile(optimizer='sgd',
-              loss='binary_crossentropy',
-              metrics=['accuracy'])
+    # model.compile(optimizer='sgd',
+    #           loss='binary_crossentropy',
+    #           metrics=['accuracy'])
     
-    model.fit(X_train, Y_train, epochs=200,validation_data=(X_test, Y_test))
+    # model.fit(X_train, Y_train, epochs=200,validation_data=(X_test, Y_test))
+    
+    from keras.models import load_model
+    model = load_model('D:\Django and Flask video\Django practice\Diabetese_prediction\diabatese_weights.hdf5')
     
     val1 = float(request.GET['n1'])
     val2 = float(request.GET['n2'])

@@ -47,7 +47,7 @@ def reload(request):
     # model.fit(X_train, Y_train, epochs=200,validation_data=(X_test, Y_test))
     
     from keras.models import load_model
-    model = load_model('D:\Django and Flask video\Django practice\Diabetese_prediction\diabatese_weights.hdf5')
+    model = load_model('D:\Django and Flask video\Django practice\Diabetese_prediction\new_diabatese_weights.hdf5')
     
     val1 = float(request.GET['n1'])
     val2 = float(request.GET['n2'])
